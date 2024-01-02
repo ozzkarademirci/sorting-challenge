@@ -7,6 +7,8 @@ const port = 8080;
 const cors=require('cors');
 
 app.use(cors({origin:true,credentials: true}));
+app.options('*', cors());
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
