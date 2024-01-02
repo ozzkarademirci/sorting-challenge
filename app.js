@@ -19,8 +19,39 @@ app.get('/', (req, res) => {
 //    res.send('Express JS on Vercel')
 //})
 
+app.get('/getResults', (req, res) => {
+    const fileName = '/tmp/results.json';
+
+    fs.readFile(fileName, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading results from file:', err);
+            res.status(500).send('Internal Server Error');
+        } else {
+            const results = JSON.parse(data);
+            res.json(results);
+        }
+    });
+});
 
 app.post('/saveResults', cors(), (req, res) => {
+    const results = req.body;
+    const fileName = '/tmp/results.json';
+    //const filePath = path.join(__dirname, fileName);
+
+
+    try {
+        // Append new results to the file
+        fs.appendFileSync(fileName, JSON.stringify(results) + '\n');
+
+        console.log('Results appended to:', fileName);
+        res.status(200).send('Results saved successfully');
+    } catch (err) {
+        console.error('Error appending results to file:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.post('/saveResults2', cors(), (req, res) => {
     const results = req.body;
     const fileName = '/tmp/results.json';
     //const filePath = path.join(__dirname, fileName);
