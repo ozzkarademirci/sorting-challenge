@@ -6,13 +6,7 @@ const app = express();
 const port = 8080;
 const cors=require('cors');
 
-app.use(
-    cors({
-      origin: ['https://sorting-challenge-ifs6alqfh-oguzs-projects-9bece568.vercel.app'],
-      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-      credentials: true,
-    })
-  );
+app.use(cors());
 app.options('*', cors());
 
 app.use(express.json());
