@@ -23,9 +23,9 @@ app.get('/', (req, res) => {
 app.post('/saveResults', cors(), (req, res) => {
     const results = req.body;
     const fileName = '/tmp/results.json';
-    const filePath = path.join(__dirname, fileName);
+    //const filePath = path.join(__dirname, fileName);
 
-    fs.writeFile(filePath, JSON.stringify(results), (err) => {
+    fs.writeFile(fileName, JSON.stringify(results), (err) => {
         if (err) {
             console.error('Error writing results to file:', err);
             res.status(500).send('Internal Server Error');
