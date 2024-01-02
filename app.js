@@ -27,7 +27,7 @@ app.get('/getResults', (req, res) => {
             console.error('Error reading results from file:', err);
             res.status(500).send('Internal Server Error');
         } else {
-            const results = JSON.parse(data);
+            const results = data;
             res.json(results);
         }
     });
