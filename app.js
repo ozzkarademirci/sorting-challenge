@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 //})
 
 
-app.post('/saveResults',cors(), (req, res) => {
+app.post('/saveResults', cors(), (req, res) => {
     const results = req.body;
     const fileName = 'results.json';
     const filePath = path.join(__dirname, fileName);
