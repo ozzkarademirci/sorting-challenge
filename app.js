@@ -6,8 +6,13 @@ const app = express();
 const port = 8080;
 const cors=require('cors');
 
-app.use(cors({origin:true,credentials: true}));
-app.options('*', cors());
+app.use(
+    cors({
+      origin: ['https://sorting-challenge-ifs6alqfh-oguzs-projects-9bece568.vercel.app'],
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      credentials: true,
+    })
+  );
 
 app.use(express.json());
 
@@ -21,8 +26,6 @@ app.get('/', (req, res) => {
 
 
 app.post('/saveResults', (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT, POST,DELETE');
     const results = req.body;
     const fileName = 'results.json';
     const filePath = path.join(__dirname, fileName);
