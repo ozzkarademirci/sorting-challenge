@@ -7,7 +7,7 @@ const port = 3001;
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/main', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
