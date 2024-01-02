@@ -7,9 +7,13 @@ const port = 8080;
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/sort', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/index.html'));
 });
+
+app.get('/', (req, res) => {
+    res.send('Express JS on Vercel')
+})
 
 
 app.post('/saveResults', (req, res) => {
