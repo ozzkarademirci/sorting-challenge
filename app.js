@@ -4,16 +4,18 @@ const fs = require('fs');
 const path = require('path')
 const app = express();
 const port = 8080;
+const cors=require('cors');
 
+app.use(cors({origin:true,credentials: true}));
 app.use(express.json());
 
-app.get('/sort', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
-app.get('/', (req, res) => {
-    res.send('Express JS on Vercel')
-})
+//app.get('/', (req, res) => {
+//    res.send('Express JS on Vercel')
+//})
 
 
 app.post('/saveResults', (req, res) => {
