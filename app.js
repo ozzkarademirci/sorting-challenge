@@ -21,6 +21,8 @@ app.get('/', (req, res) => {
 
 
 app.post('/saveResults', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT, POST,DELETE');
     const results = req.body;
     const fileName = 'results.json';
     const filePath = path.join(__dirname, fileName);
