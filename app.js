@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 
 app.post('/saveResults', cors(), (req, res) => {
     const results = req.body;
-    const fileName = 'results.json';
+    const fileName = '/tmp/results.json';
     const filePath = path.join(__dirname, fileName);
 
     fs.writeFile(filePath, JSON.stringify(results), (err) => {
