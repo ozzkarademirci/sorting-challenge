@@ -84,7 +84,7 @@
 
         let currentCharacterIndex = 0;
         let currentRound = 1;
-        const totalRounds = 2;
+        const totalRounds = 10;
 
         let teamSize;
         let taskCount;
@@ -135,7 +135,7 @@
                 clickedChar.classList.add('sorted-char');
 
                 // Check if all characters are sorted
-                if (currentCharacterIndex === 1) { //charactersAnswer.length) {
+                if (currentCharacterIndex === charactersAnswer.length) {
 
                     // time
                     let complitionTime = new Date().getTime() - roundStartTime;
