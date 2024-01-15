@@ -100,8 +100,9 @@
             document.getElementById('charContainer').style.display = 'flex';
 
             document.getElementById('round').innerText = 'Round 1';
-
-            showTeamInfo(); // Show team information when sorting starts
+            
+            showTeamInfo(randomIntFromInterval(2, 4)); // Show team information when sorting starts
+            
             roundStartTime = new Date().getTime();
         }
 
@@ -195,10 +196,36 @@
             return Math.floor(Math.random() * (max - min + 1) + min)
         }
 
-        function showTeamInfo() {
+        function showTeamInfo(group) {
             const teamInfoElement = document.getElementById('teamInfo');
-            teamSize = Math.random() < 0.5 ? 50 : randomIntFromInterval(3, 10); // 50 or 3-10
-            taskCount = Math.random() < 0.5 ? 0 : randomIntFromInterval(100, 200); // 0 or 100 -200
+            //teamSize = Math.random() < 0.5 ? 50 : randomIntFromInterval(3, 10); // 50 or 3-10
+            //taskCount = Math.random() < 0.5 ? 0 : randomIntFromInterval(100, 200); // 0 or 100 -200
+            
+            
+            switch (group) {
+                case 1:
+                    // only high team size - 50 and no tasks
+                    teamSize = 50;
+                    taskCount = 0;
+                    break;
+                case 2:
+                    // only low team size - 3-10 and no tasks
+                    teamSize = randomIntFromInterval(3, 10); // 3-10
+                    taskCount = 0;
+                    break;
+                case 3:
+                    // only high team size - 50 and 100-200 tasks
+                    teamSize = 50;
+                    taskCount = randomIntFromInterval(100, 200);
+                    break;                        
+                case 4:
+                    // only low team size - 3-10 and 100-200 tasks
+                    teamSize = randomIntFromInterval(3, 10); // 3-10
+                    taskCount = randomIntFromInterval(100, 200);
+                    break;                
+                default:
+                break;
+            }
             const teamSizeMessage = `Team Size: ${teamSize} People`;
             const tasksMessage = taskCount == 0 ? '' : ` | Tasks Awaiting for the team: ${taskCount} tasks`;
 

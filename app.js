@@ -51,22 +51,6 @@ app.post('/saveResults', cors(), (req, res) => {
     }
 });
 
-app.post('/saveResults2', cors(), (req, res) => {
-    const results = req.body;
-    const fileName = '/tmp/results.json';
-    //const filePath = path.join(__dirname, fileName);
-
-    fs.writeFile(fileName, JSON.stringify(results), (err) => {
-        if (err) {
-            console.error('Error writing results to file:', err);
-            res.status(500).send('Internal Server Error');
-        } else {
-            console.log('Results saved to:', fileName);
-            res.status(200).send('Results saved successfully');
-        }
-    });
-});
-
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
